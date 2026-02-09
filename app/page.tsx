@@ -2,91 +2,9 @@ import Image from "next/image";
 import { HeroCarousel } from "./components/HeroCarousel";
 import { LeafOrnament } from "./components/LeafOrnament";
 import { MobileMenu } from "./components/MobileMenu";
+import { MenuSection } from "./components/MenuSection";
 
 export default function Home() {
-  const menuGroups = [
-    {
-      title: "Cold",
-      items: [
-        {
-          title: "Smashed Cucumber",
-          desc: "Beancurd, cilantro, carrot, chili oil.",
-          price: "$12",
-        },
-      ],
-    },
-    {
-      title: "Dim Sum",
-      items: [
-        {
-          title: "Dumplings",
-          desc: "Prosperity “pork” & chive, boiled or pan-fried (5).",
-          price: "$16",
-        },
-        {
-          title: "King Oyster Bao",
-          desc: "Jalapeno, shallot, chili mayo (2).",
-          price: "$15",
-        },
-        {
-          title: "Cheddar Rangoons",
-          desc: "Broccoli, truffle oil, tomato soup (7).",
-          price: "$16",
-        },
-        {
-          title: "Monkey Buns",
-          desc: "Char siu, hoisin, sweet onion (4).",
-          price: "$16",
-        },
-      ],
-    },
-    {
-      title: "Wok",
-      items: [
-        {
-          title: "Biang Biang Noodles",
-          desc: "Chili oil, green onion.",
-          price: "$22",
-        },
-        {
-          title: "Garlic Long Beans",
-          desc: "Seitan “pork”, pickled long bean, chili.",
-          price: "$18",
-        },
-        {
-          title: "Fried Rice",
-          desc: "Foraged mushroom, sunflower, black truffle.",
-          price: "$32",
-        },
-        {
-          title: "Kung Pao Tofu",
-          desc: "Peanut, chili, green onion, steamed rice.",
-          price: "$24",
-        },
-      ],
-    },
-    {
-      title: "Sweet",
-      items: [
-        {
-          title: "M&B Ice Cream",
-          desc: "Ask for today’s flavors.",
-          price: "$6",
-        },
-        {
-          title: "Bao Beignets",
-          desc: "Five spice, black sesame caramel.",
-          price: "$12",
-        },
-        {
-          title: "Chocolate Rose Dumpling",
-          desc: "Coconut whip, chocolate soil.",
-          price: "$18",
-        },
-      ],
-    },
-  ];
-
   return (
     <div className="min-h-screen text-[15px] text-foreground">
       <header className="absolute left-0 right-0 top-0 z-10 bg-gradient-to-b from-white/60 via-white/50 to-transparentbackdrop-blur-xs">
@@ -199,27 +117,9 @@ export default function Home() {
       </section>
 
       <main className="bg-[#0b0a08]">
-        <section id="menu" className="mx-auto w-full max-w-6xl px-6 py-16">
-          <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr]">
-            <div className="space-y-6">
-              <h2 className="font-display text-4xl">
-                Discover Our Diverse Menu
-              </h2>
-              <p className="text-muted">
-                Our ethos? You will love the food, you will love the experience,
-                but most importantly, you will love yourself.
-              </p>
-              <Button label="View Brunch Menu" variant="outline" href="#menu" />
-            </div>
-            <div className="grid gap-4">
-              {menuGroups.map((group) => (
-                <MenuGroup key={group.title} {...group} />
-              ))}
-            </div>
-          </div>
-        </section>
+        <MenuSection />
 
-        <section id="events" className="mx-auto w-full max-w-6xl px-6 pb-20">
+        <section id="events" className="mx-auto w-full max-w-7xl px-6 pb-20">
           <div className="grid gap-10 lg:grid-cols-[1fr_1fr]">
             <div className="relative min-h-[300px] overflow-hidden rounded-3xl border border-accent/20">
               <Image
@@ -233,15 +133,50 @@ export default function Home() {
             </div>
             <div className="space-y-5">
               <h3 className="font-display text-3xl">Our Story</h3>
-              <p className="text-muted">
-                This restaurant represents a journey shared by Minty and Alex,
-                bringing plant-based Chinese cuisine to life through nostalgia,
-                craft, and community.
-              </p>
-              <p className="text-muted">
-                We want our guests to feel that Men & Beasts belongs to them, to
-                Echo Park and greater LA, like a home away from home.
-              </p>
+              <div className="space-y-4 text-muted">
+                <p>
+                  This restaurant and the cuisine we will serve is extremely
+                  special to me because it represents a journey that Alex and I
+                  made together as partners.
+                </p>
+                <p>
+                  After moving to the US, I struggled to find food I liked, and
+                  would often skip meals out of total disillusionment with
+                  whatever I had tried to eat or cook. Homesickness definitely
+                  played its part and I found myself constantly ordering New
+                  York Chinese food to obtain some semblance of nostalgia.
+                  After I met Alex, he quickly introduced me to a plant-based
+                  diet, which sort of unlocked a love for food and cooking that
+                  I had lost since my early childhood.
+                </p>
+                <p>
+                  So, once I embraced the plant-based diet, I immediately
+                  started to fantasize about how I could continue eating
+                  Chinese food, and started asking Alex to make plant-based
+                  versions of all kinds of my favorite Chinese dishes.
+                </p>
+                <p>
+                  I see the food that Alex &amp; I created for Minty Z, and now
+                  Men &amp; Beasts, as the embodiment of our own unique and
+                  shared experiences: Chinese food, adapted to be plant-based,
+                  created by a highly talented and passionate chef.
+                </p>
+                <p>
+                  Many of our regulars at Minty Z considered the restaurant to
+                  be a small cornerstone of their lives: where they met their
+                  partners, had their first date, got engaged, had their
+                  wedding dinner, or simply somewhere they felt really
+                  comfortable, like a home away from home. We hope that we can
+                  bring the same vibe to Men &amp; Beasts.
+                </p>
+                <p>
+                  We want our guests, especially locals, to come to consider
+                  M&amp;B something that belongs to them, to Echo Park and
+                  greater LA. Similar to a sports team, the establishment may
+                  be a privately-owned company, but the place and the
+                  experience belong to the community.
+                </p>
+              </div>
               <p className="text-sm uppercase tracking-[0.2em] text-accent">
                 — Minty Zhu, Co-Founder
               </p>
@@ -251,7 +186,7 @@ export default function Home() {
 
         <section
           id="private-dining"
-          className="mx-auto w-full max-w-6xl px-6 pb-20"
+          className="mx-auto w-full max-w-7xl px-6 pb-20"
         >
           <div className="grid gap-10 lg:grid-cols-[1.05fr_0.95fr]">
             <div className="rounded-3xl border border-accent/20 bg-[#15110d] p-8 text-[#f2e8dc] shadow-[0_18px_40px_rgba(67,38,24,0.25)]">
@@ -288,7 +223,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="visit" className="mx-auto w-full max-w-6xl px-6 pb-20">
+        <section id="visit" className="mx-auto w-full max-w-7xl px-6 pb-20">
           <div className="grid gap-10 lg:grid-cols-[1fr_1fr]">
             <div className="space-y-6">
               <h3 className="font-display text-3xl">
@@ -329,7 +264,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="faq" className="mx-auto w-full max-w-6xl px-6 pb-20">
+        <section id="faq" className="mx-auto w-full max-w-7xl px-6 pb-20">
           <div className="grid gap-4">
             {[
               {
@@ -366,7 +301,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="mx-auto w-full max-w-6xl px-6 pb-20">
+        <section className="mx-auto w-full max-w-7xl px-6 pb-20">
           <div className="grid gap-8 lg:grid-cols-[1fr_1fr]">
             <div className="rounded-3xl border border-accent/20 bg-[#15110d] p-8 text-[#f2e8dc] shadow-[0_18px_40px_rgba(67,38,24,0.2)]">
               <p className="text-xs uppercase tracking-[0.3em] text-[#cdb8a5]">
@@ -405,7 +340,7 @@ export default function Home() {
         </section>
 
         <footer className="surface-dark px-6 py-10 text-sm text-[#f2e8dc]">
-          <div className="mx-auto flex w-full max-w-6xl flex-wrap items-center justify-between gap-6">
+          <div className="mx-auto flex w-full max-w-7xl flex-wrap items-center justify-between gap-6">
             <p className="font-display text-lg uppercase tracking-[0.2em]">
               Men & Beasts
             </p>
@@ -415,7 +350,7 @@ export default function Home() {
               <span>FAQ</span>
             </div>
           </div>
-          <p className="mx-auto mt-6 max-w-6xl text-xs uppercase tracking-[0.3em] text-[#e6d6c7]">
+          <p className="mx-auto mt-6 max-w-7xl text-xs uppercase tracking-[0.3em] text-[#e6d6c7]">
             (347) 325-2033 · hello@menandbeasts.com · Echo Park, Los Angeles
           </p>
         </footer>
@@ -474,49 +409,6 @@ function InfoCard({ title, body }: { title: string; body: string }) {
         {title}
       </p>
       <p className="mt-3 text-sm text-[#e6d6c7]">{body}</p>
-    </div>
-  );
-}
-
-function MenuItem({
-  title,
-  desc,
-  price,
-}: {
-  title: string;
-  desc: string;
-  price: string;
-}) {
-  return (
-    <div className="rounded-2xl border border-accent/20 bg-[#15110d] p-5 text-[#f2e8dc] shadow-[0_12px_28px_rgba(67,38,24,0.2)]">
-      <div className="flex items-center justify-between">
-        <p className="text-sm uppercase tracking-[0.2em] text-[#f2e8dc]">
-          {title}
-        </p>
-        <p className="text-sm text-accent">{price}</p>
-      </div>
-      <p className="mt-2 text-sm text-[#e6d6c7]">{desc}</p>
-    </div>
-  );
-}
-
-function MenuGroup({
-  title,
-  items,
-}: {
-  title: string;
-  items: Array<{ title: string; desc: string; price: string }>;
-}) {
-  return (
-    <div className="rounded-3xl border border-accent/20 bg-[#1d1510] p-5 text-[#f2e8dc] shadow-[0_18px_40px_rgba(67,38,24,0.25)]">
-      <p className="text-xs uppercase tracking-[0.25em] text-[#cdb8a5]">
-        {title}
-      </p>
-      <div className="mt-4 grid gap-4">
-        {items.map((item) => (
-          <MenuItem key={item.title} {...item} />
-        ))}
-      </div>
     </div>
   );
 }
