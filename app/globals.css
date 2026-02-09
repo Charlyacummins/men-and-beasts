@@ -1,26 +1,151 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #0b0a08;
+  --foreground: #f5efe5;
+  --accent: #caa46d;
+  --muted: #b9a992;
+  --ink: #14120f;
+  --cream: #0f0c0a;
+  --brown: #2b1a12;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-accent: var(--accent);
+  --color-muted: var(--muted);
+  --color-ink: var(--ink);
+  --font-sans: var(--font-sans);
+  --font-display: var(--font-display);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #0b0a08;
+    --foreground: #f5efe5;
   }
 }
 
 body {
-  background: var(--background);
+  background: radial-gradient(
+      1200px 600px at 10% -10%,
+      rgba(202, 164, 109, 0.12),
+      transparent 60%
+    ),
+    radial-gradient(
+      900px 500px at 95% 0%,
+      rgba(129, 93, 51, 0.2),
+      transparent 55%
+    ),
+    var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans), system-ui, -apple-system, sans-serif;
+  letter-spacing: 0.005em;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+.font-display {
+  font-family: var(--font-display), "Times New Roman", serif;
+  letter-spacing: 0.02em;
+}
+
+.surface {
+  background: var(--cream);
+}
+
+.surface-dark {
+  background: var(--brown);
+  color: #f6efe6;
+}
+
+.hero-shell {
+  position: relative;
+  height: 100%;
+  border-radius: 0;
+  overflow: hidden;
+}
+
+.hero-image {
+  position: absolute;
+  inset: 0;
+  border-radius: 0;
+  background: linear-gradient(
+      120deg,
+      rgba(40, 24, 16, 0.55),
+      rgba(28, 18, 12, 0.25)
+    ),
+    radial-gradient(
+      circle at 20% 20%,
+      rgba(255, 255, 255, 0.3),
+      transparent 55%
+    );
+}
+
+.hero-image img {
+  object-fit: cover;
+  border-radius: 0;
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(20, 12, 8, 0.45) 0%,
+    rgba(20, 12, 8, 0.2) 40%,
+    rgba(20, 12, 8, 0.5) 100%
+  );
+}
+
+.hero-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 48px;
+  width: 48px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  background: rgba(30, 20, 14, 0.35);
+  color: #fff;
+  font-size: 28px;
+  line-height: 1;
+  display: grid;
+  place-items: center;
+  z-index: 3;
+}
+
+.hero-left {
+  left: 24px;
+}
+
+.hero-right {
+  right: 24px;
+}
+
+.hero-dots {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px;
+  z-index: 3;
+}
+
+.hero-dot {
+  height: 8px;
+  width: 8px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  background: transparent;
+}
+
+.hero-dot.is-active {
+  background: #fff;
 }
