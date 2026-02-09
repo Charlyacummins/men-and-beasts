@@ -1,8 +1,10 @@
 import Image from "next/image";
 import { HeroCarousel } from "./components/HeroCarousel";
 import { LeafOrnament } from "./components/LeafOrnament";
-import { MobileMenu } from "./components/MobileMenu";
+import { MenuCarousel } from "./components/MenuCarousel";
 import { MenuSection } from "./components/MenuSection";
+import { SiteFooter } from "./components/SiteFooter";
+import { MobileMenu } from "./components/MobileMenu";
 
 export default function Home() {
   return (
@@ -10,35 +12,35 @@ export default function Home() {
       <header className="absolute left-0 right-0 top-0 z-10 bg-gradient-to-b from-white/60 via-white/50 to-transparentbackdrop-blur-xs">
         <div className="mx-auto flex w-full max-w-6xl items-center justify-between px-6 pb-2 pt-2 text-xs uppercase tracking-[0.35em] text-[#f8f2ea]">
           <nav className="hidden items-center gap-6 md:flex">
-            <a href="#events" className="hover:text-white">
+            <a href="/events" className="hover:text-white">
               Events
             </a>
             <a href="#menu" className="hover:text-white">
               Menu
             </a>
-            <a href="#visit" className="hover:text-white">
+            <a href="https://resy.com/cities/los-angeles-ca/venues/men-and-beasts" className="hover:text-white">
               Reservations
             </a>
           </nav>
 
-          <div className="flex items-center gap-2 text-center md:flex-col md:gap-2 z-100">
+          <a href="/" className="flex items-center gap-2 text-center md:flex-col md:gap-2">
             <Image
               src="/logo-mark.png"
               alt="Men & Beasts logo"
-              width={96}
-              height={96}
+              width={80}
+              height={80}
               className="md:h-[144px] md:w-[144px]"
             />
-          </div>
+          </a>
 
           <nav className="hidden items-center gap-6 md:flex">
-            <a href="#private-dining" className="hover:text-white">
+            <a href="/private-dining" className="hover:text-white">
               Private Dining
             </a>
             <a href="#about" className="hover:text-white">
               About Us
             </a>
-            <a href="#faq" className="hover:text-white">
+            <a href="/#faq" className="hover:text-white">
               FAQ
             </a>
           </nav>
@@ -52,26 +54,29 @@ export default function Home() {
         <div className="absolute inset-0">
           <HeroCarousel />
         </div>
-        <div className="absolute inset-0 z-10 mx-auto flex h-full w-full max-w-5xl flex-col items-center justify-center px-6 py-20 text-center text-[#f8f2ea]">
+        <div className="pointer-events-none absolute inset-0 z-10 mx-auto flex h-full w-full max-w-5xl flex-col items-center justify-center px-6 py-20 text-center text-[#f8f2ea]">
           <h1 className="font-display text-4xl md:text-6xl">Men & Beasts</h1>
           <p className="mt-3 text-lg md:text-2xl">
             Chinese Restaurant & Tea Lounge in Echo Park
           </p>
-          <div className="mt-8 flex flex-wrap justify-center gap-4">
+          <div className="pointer-events-auto mt-8 flex w-full flex-col items-center justify-center gap-4 sm:w-auto sm:flex-row sm:flex-wrap sm:items-center">
             <Button
               label="Book Now"
               variant="primary"
               href="https://resy.com/cities/los-angeles-ca/venues/men-and-beasts"
+              className="w-[220px] sm:w-auto"
             />
             <Button
               label="Order Take-Out"
               variant="outline"
               href="https://order.toasttab.com/online/men-and-beasts-2100-w-sunset-blvd"
+              className="w-[220px] sm:w-auto"
             />
             <Button
               label="Order Delivery"
               variant="ghost"
               href="https://www.ubereats.com/store/men-%26-beasts/upjlN5gBVQqYm7fylcsxfw?utm_source=wok"
+              className="w-[220px] sm:w-auto"
             />
           </div>
         </div>
@@ -117,6 +122,7 @@ export default function Home() {
       </section>
 
       <main className="bg-[#0b0a08]">
+        <MenuCarousel />
         <MenuSection />
 
         <section id="events" className="mx-auto w-full max-w-7xl px-6 pb-20">
@@ -182,6 +188,34 @@ export default function Home() {
               </p>
             </div>
           </div>
+        </section>
+
+        <section className="mx-auto w-full max-w-7xl px-6 pb-20">
+          <a
+            href="/private-dining"
+            className="group relative block min-h-[360px] overflow-hidden rounded-3xl border border-accent/20"
+          >
+            <Image
+              src="/private-dining.jpg"
+              alt="Elegant and inviting private dining"
+              fill
+              sizes="(min-width: 1024px) 100vw, 100vw"
+              className="object-cover"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
+            <div className="absolute bottom-8 right-8 max-w-md rounded-2xl border border-white/10 bg-black/60 p-6 text-white shadow-[0_20px_40px_rgba(0,0,0,0.4)] backdrop-blur">
+              <div className="flex items-center justify-between gap-6">
+                <h3 className="font-display text-2xl">Elegant &amp; Inviting</h3>
+                <span className="flex h-10 w-10 items-center justify-center rounded-full border border-white/40 text-lg transition group-hover:translate-x-1">
+                  ↗
+                </span>
+              </div>
+              <p className="mt-3 text-sm text-white/80">
+                Our stylish interior blends modern elegance with cozy comfort,
+                creating a space that feels both sophisticated and relaxed.
+              </p>
+            </div>
+          </a>
         </section>
 
         <section
@@ -265,7 +299,11 @@ export default function Home() {
         </section>
 
         <section id="faq" className="mx-auto w-full max-w-7xl px-6 pb-20">
-          <div className="grid gap-4">
+          <div className="mb-6 flex items-center gap-4">
+            
+          </div>
+          <h2 className="font-display text-3xl text-[#f2e8dc]">FAQ</h2>
+          <div className="mt-6 grid gap-4">
             {[
               {
                 q: "Do you take reservations?",
@@ -339,21 +377,7 @@ export default function Home() {
           </div>
         </section>
 
-        <footer className="surface-dark px-6 py-10 text-sm text-[#f2e8dc]">
-          <div className="mx-auto flex w-full max-w-7xl flex-wrap items-center justify-between gap-6">
-            <p className="font-display text-lg uppercase tracking-[0.2em]">
-              Men & Beasts
-            </p>
-            <div className="flex flex-wrap gap-6 text-xs uppercase tracking-[0.25em]">
-              <span>Events</span>
-              <span>Menu</span>
-              <span>FAQ</span>
-            </div>
-          </div>
-          <p className="mx-auto mt-6 max-w-7xl text-xs uppercase tracking-[0.3em] text-[#e6d6c7]">
-            (347) 325-2033 · hello@menandbeasts.com · Echo Park, Los Angeles
-          </p>
-        </footer>
+        <SiteFooter />
       </main>
     </div>
   );
@@ -363,10 +387,12 @@ function Button({
   label,
   variant,
   href,
+  className,
 }: {
   label: string;
   variant: "primary" | "outline" | "ghost";
   href?: string;
+  className?: string;
 }) {
   const base =
     "inline-flex items-center justify-center rounded-full px-6 py-3 text-xs uppercase tracking-[0.3em] transition";
@@ -379,7 +405,7 @@ function Button({
       "border border-transparent text-[#f8f2ea] bg-[#2c1a12]/60 hover:bg-[#2c1a12]/80",
   };
 
-  const classes = `${base} ${styles[variant]}`;
+  const classes = `${base} ${styles[variant]} ${className ?? ""}`;
   const isExternal = href?.startsWith("http");
 
   if (href) {

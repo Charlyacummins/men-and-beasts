@@ -117,7 +117,8 @@ body {
   line-height: 1;
   display: grid;
   place-items: center;
-  z-index: 3;
+  z-index: 40;
+  touch-action: manipulation;
 }
 
 .hero-left {
@@ -135,7 +136,7 @@ body {
   transform: translateX(-50%);
   display: flex;
   gap: 10px;
-  z-index: 3;
+  z-index: 40;
 }
 
 .hero-dot {
@@ -148,4 +149,13 @@ body {
 
 .hero-dot.is-active {
   background: #fff;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
