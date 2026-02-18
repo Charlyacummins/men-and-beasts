@@ -15,198 +15,87 @@ type MenuGroup = {
   items: MenuItem[];
 };
 
-const dinnerMenu: MenuGroup[] = [
+type Menu = {
+  name: string;
+  groups: MenuGroup[];
+};
+
+// ---------------------------------------------------------------------------
+// Hardcoded fallback — used only when no Sanity data is available
+// ---------------------------------------------------------------------------
+const fallbackMenus: Menu[] = [
   {
-    title: "Cold",
-    items: [
+    name: "Dinner",
+    groups: [
       {
-        zh: "黄瓜",
-        en: "Smashed Cucumber",
-        desc: "Beancurd, cilantro, carrot, chili oil.",
-        price: "$12",
-        tag: "soy-free-2",
+        title: "Cold",
+        items: [
+          { zh: "黄瓜", en: "Smashed Cucumber", desc: "Beancurd, cilantro, carrot, chili oil.", price: "$12", tag: "soy-free-2" },
+        ],
+      },
+      {
+        title: "Dim Sum",
+        items: [
+          { zh: "手工煎饺", en: "Dumplings", desc: "Prosperity 'pork' & chive, boiled or pan-fried (5).", price: "$16" },
+          { zh: "磨菇包", en: "King Oyster Bao", desc: "Jalapeno, shallot, chili mayo (2).", price: "$15" },
+          { zh: "奶酪  炸云吞", en: "Cheddar Rangoons", desc: "Broccoli, truffle oil, tomato soup (7).", price: "$16", tag: "Nut · soy-free-1" },
+          { zh: "叉烧包", en: "Monkey Buns", desc: "Char siu, hoisin, sweet onion (4).", price: "$16" },
+          { zh: "豆腐馅饼", en: "Beancurd Enchiladas", desc: "Soy tinga, kabocha, chipotle, cotija.", price: "$20", tag: "soy-free-2" },
+          { zh: "小煎堆", en: "Baby Carrot", desc: "Black sesame, turmeric, mint (3).", price: "$15", tag: "soy-free-2 · soy-free-1" },
+        ],
+      },
+      {
+        title: "Wok",
+        items: [
+          { zh: "邊邊面", en: "Biang Biang Noodles", desc: "Chili oil, green onion.", price: "$22" },
+          { zh: "大蒜长豆", en: "Garlic Long Beans", desc: "Seitan 'pork', pickled long bean, chili.", price: "$18" },
+          { zh: "松露炒饭", en: "Fried Rice", desc: "Foraged mushroom, sunflower, black truffle.", price: "$32", tag: "soy-free-2" },
+          { zh: "宮保豆腐", en: "Kung Pao Tofu", desc: "Peanut, chili, green onion, steamed rice.", price: "$24", tag: "soy-free-2" },
+          { zh: "糖醋蘑菇", en: "Sweet & Sour Mushroom", desc: "Cashew, garlic, bell pepper.", price: "$25", tag: "soy-free-2" },
+        ],
+      },
+      {
+        title: "Sweet",
+        items: [
+          { zh: "冰淇淋", en: "M&B Ice Cream", desc: "Ask for today's flavors.", price: "$6" },
+          { zh: "小甜甜圈", en: "Bao Beignets", desc: "Five spice, black sesame caramel.", price: "$12", tag: "soy-free-1" },
+          { zh: "玫瑰饺子", en: "Chocolate Rose Dumpling", desc: "Coconut whip, chocolate soil.", price: "$18" },
+        ],
       },
     ],
   },
   {
-    title: "Dim Sum",
-    items: [
+    name: "Brunch",
+    groups: [
       {
-        zh: "手工煎饺",
-        en: "Dumplings",
-        desc: "Prosperity ‘pork’ & chive, boiled or pan-fried (5).",
-        price: "$16",
-      },
-      {
-        zh: "磨菇包",
-        en: "King Oyster Bao",
-        desc: "Jalapeno, shallot, chili mayo (2).",
-        price: "$15",
-      },
-      {
-        zh: "奶酪  炸云吞",
-        en: "Cheddar Rangoons",
-        desc: "Broccoli, truffle oil, tomato soup (7).",
-        price: "$16",
-        tag: "Nut · soy-free-1",
-      },
-      {
-        zh: "叉烧包",
-        en: "Monkey Buns",
-        desc: "Char siu, hoisin, sweet onion (4).",
-        price: "$16",
-      },
-      {
-        zh: "豆腐馅饼",
-        en: "Beancurd Enchiladas",
-        desc: "Soy tinga, kabocha, chipotle, cotija.",
-        price: "$20",
-        tag: "soy-free-2",
-      },
-      {
-        zh: "小煎堆",
-        en: "Baby Carrot",
-        desc: "Black sesame, turmeric, mint (3).",
-        price: "$15",
-        tag: "soy-free-2 · soy-free-1",
-      },
-    ],
-  },
-  {
-    title: "Wok",
-    items: [
-      {
-        zh: "邊邊面",
-        en: "Biang Biang Noodles",
-        desc: "Chili oil, green onion.",
-        price: "$22",
-      },
-      {
-        zh: "大蒜长豆",
-        en: "Garlic Long Beans",
-        desc: "Seitan ‘pork’, pickled long bean, chili.",
-        price: "$18",
-      },
-      {
-        zh: "松露炒饭",
-        en: "Fried Rice",
-        desc: "Foraged mushroom, sunflower, black truffle.",
-        price: "$32",
-        tag: "soy-free-2",
-      },
-      {
-        zh: "宮保豆腐",
-        en: "Kung Pao Tofu",
-        desc: "Peanut, chili, green onion, steamed rice.",
-        price: "$24",
-        tag: "soy-free-2",
-      },
-      {
-        zh: "糖醋蘑菇",
-        en: "Sweet & Sour Mushroom",
-        desc: "Cashew, garlic, bell pepper.",
-        price: "$25",
-        tag: "soy-free-2",
-      },
-    ],
-  },
-  {
-    title: "Sweet",
-    items: [
-      {
-        zh: "冰淇淋",
-        en: "M&B Ice Cream",
-        desc: "Ask for today’s flavors.",
-        price: "$6",
-      },
-      {
-        zh: "小甜甜圈",
-        en: "Bao Beignets",
-        desc: "Five spice, black sesame caramel.",
-        price: "$12",
-        tag: "soy-free-1",
-      },
-      {
-        zh: "玫瑰饺子",
-        en: "Chocolate Rose Dumpling",
-        desc: "Coconut whip, chocolate soil.",
-        price: "$18",
+        title: "Brunch Menu",
+        items: [
+          { zh: "黄瓜", en: "Smashed Cucumber", desc: "Beancurd, cilantro, carrot, chili oil.", price: "$12", tag: "soy-free-2" },
+          { zh: "中式松饼", en: "Binglish Muffin", desc: "Truffle 'butter'.", price: "$15" },
+          { zh: "手工煎饺", en: "Pan-fried Dumpling", desc: "Prosperity 'pork' & cabbage, chili oil (6).", price: "$14" },
+          { zh: "松露炒饭", en: "Fried Rice", desc: "Foraged mushroom, black truffle.", price: "$34", tag: "soy-free-2" },
+          { zh: "糖醋蘑菇", en: "Sweet & Sour Mushroom", desc: "Cashew, garlic, bell pepper.", price: "$25", tag: "Nut" },
+          { zh: "牛油果咸包", en: "Avocado Bao", desc: "Pickled radish, tofu-lime mayo.", price: "$18" },
+          { zh: "小甜甜圈", en: "Bao Beignets", desc: "Five spice, black sesame caramel.", price: "$14" },
+          { zh: "冰淇淋", en: "M&B Ice Cream", desc: "Ask for today's flavors.", price: "$6" },
+          { zh: "舒芙蕾饼", en: "Souffle Pancakes", desc: "Plant-based butter, maple syrup.", price: "$20" },
+        ],
       },
     ],
   },
 ];
 
-const brunchMenu: MenuGroup[] = [
-  {
-    title: "Brunch Menu",
-    items: [
-      {
-        zh: "黄瓜",
-        en: "Smashed Cucumber",
-        desc: "Beancurd, cilantro, carrot, chili oil.",
-        price: "$12",
-        tag: "soy-free-2",
-      },
-      {
-        zh: "中式松饼",
-        en: "Binglish Muffin",
-        desc: "Truffle ‘butter’.",
-        price: "$15",
-      },
-      {
-        zh: "手工煎饺",
-        en: "Pan-fried Dumpling",
-        desc: "Prosperity 'pork’ & cabbage, chili oil (6).",
-        price: "$14",
-      },
-      {
-        zh: "松露炒饭",
-        en: "Fried Rice",
-        desc: "Foraged mushroom, black truffle.",
-        price: "$34",
-        tag: "soy-free-2",
-      },
-      {
-        zh: "糖醋蘑菇",
-        en: "Sweet & Sour Mushroom",
-        desc: "Cashew, garlic, bell pepper.",
-        price: "$25",
-        tag: "Nut",
-      },
-      {
-        zh: "牛油果咸包",
-        en: "Avocado Bao",
-        desc: "Pickled radish, tofu-lime mayo.",
-        price: "$18",
-      },
-      {
-        zh: "小甜甜圈",
-        en: "Bao Beignets",
-        desc: "Five spice, black sesame caramel.",
-        price: "$14",
-      },
-      {
-        zh: "冰淇淋",
-        en: "M&B Ice Cream",
-        desc: "Ask for today's flavors.",
-        price: "$6",
-      },
-      {
-        zh: "舒芙蕾饼",
-        en: "Souffle Pancakes",
-        desc: "Plant-based butter, maple syrup.",
-        price: "$20",
-      },
-    ],
-  },
-];
+// ---------------------------------------------------------------------------
+// Component
+// ---------------------------------------------------------------------------
+type MenuSectionProps = {
+  menus?: Menu[] | null;
+};
 
-export function MenuSection() {
-  const [menu, setMenu] = useState<"dinner" | "brunch">("dinner");
-  const groups = useMemo(
-    () => (menu === "brunch" ? brunchMenu : dinnerMenu),
-    [menu]
-  );
+export function MenuSection({ menus: menusProp }: MenuSectionProps = {}) {
+  const allMenus = menusProp && menusProp.length > 0 ? menusProp : fallbackMenus;
+  const [activeIndex, setActiveIndex] = useState(0);
+  const groups = useMemo(() => allMenus[activeIndex]?.groups ?? [], [allMenus, activeIndex]);
 
   return (
     <section id="menu" className="mx-auto w-full max-w-7xl px-6 py-16">
@@ -217,15 +106,22 @@ export function MenuSection() {
             Our ethos? You will love the food, you will love the experience,
             but most importantly, you will love yourself.
           </p>
-          <button
-            type="button"
-            className="inline-flex items-center justify-center rounded-full border border-[#e0c7b6] bg-[#6b3b24] px-6 py-3 text-xs uppercase tracking-[0.3em] text-[#f8f2ea] transition hover:bg-[#7a4429]"
-            onClick={() =>
-              setMenu((current) => (current === "brunch" ? "dinner" : "brunch"))
-            }
-          >
-            {menu === "brunch" ? "View Dinner Menu" : "View Brunch Menu"}
-          </button>
+          <div className="flex flex-wrap gap-3">
+            {allMenus.map((menu, i) => (
+              <button
+                key={menu.name}
+                type="button"
+                onClick={() => setActiveIndex(i)}
+                className={`inline-flex items-center justify-center rounded-full border px-6 py-3 text-xs uppercase tracking-[0.3em] transition ${
+                  i === activeIndex
+                    ? "border-[#e0c7b6] bg-[#6b3b24] text-[#f8f2ea] hover:bg-[#7a4429]"
+                    : "border-[#5f4131] bg-transparent text-[#cdb8a5] hover:border-[#e0c7b6] hover:text-[#f8f2ea]"
+                }`}
+              >
+                {menu.name}
+              </button>
+            ))}
+          </div>
         </div>
         <div className="grid gap-4">
           {groups.map((group) => (

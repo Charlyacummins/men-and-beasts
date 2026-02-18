@@ -1,13 +1,15 @@
 import type { Metadata } from "next";
-import { Playfair_Display, Source_Sans_3 } from "next/font/google";
+import { Crimson_Text, Inter_Tight } from "next/font/google";
 import "./globals.css";
 
-const display = Playfair_Display({
+const display = Crimson_Text({
   variable: "--font-display",
+  weight: ["400", "600", "700"],
+  style: ["normal", "italic"],
   subsets: ["latin"],
 });
 
-const sans = Source_Sans_3({
+const sans = Inter_Tight({
   variable: "--font-sans",
   subsets: ["latin"],
 });

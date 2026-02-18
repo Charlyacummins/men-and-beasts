@@ -5,20 +5,29 @@ import { MenuCarousel } from "./components/MenuCarousel";
 import { MenuSection } from "./components/MenuSection";
 import { SiteFooter } from "./components/SiteFooter";
 import { MobileMenu } from "./components/MobileMenu";
+import { client } from "../sanity/lib/client";
+import { menusQuery } from "../sanity/lib/queries";
 
-export default function Home() {
+export default async function Home() {
+  const menus = await client.fetch(menusQuery).catch(() => null);
+
+  const navLinkClass = "!text-[#3C2114] transition-colors hover:!text-[#3C2114]";
+
   return (
     <div className="min-h-screen text-[15px] text-foreground">
-      <header className="absolute left-0 right-0 top-0 z-10 bg-gradient-to-b from-white/60 via-white/50 to-transparentbackdrop-blur-xs">
-        <div className="mx-auto flex w-full max-w-6xl items-center justify-between px-6 pb-2 pt-2 text-xs uppercase tracking-[0.35em] text-[#f8f2ea]">
+      <header className="absolute left-0 right-0 top-0 z-10 bg-gradient-to-b from-white/60 via-white/50 to-transparent backdrop-blur-xs">
+        <div className="mx-auto flex w-full max-w-6xl items-center justify-between px-6 pb-2 pt-2 text-xs uppercase tracking-[0.35em]">
           <nav className="hidden items-center gap-6 md:flex">
-            <a href="/events" className="hover:text-white">
+            <a href="/events" className={navLinkClass}>
               Events
             </a>
-            <a href="#menu" className="hover:text-white">
+            <a href="#menu" className={navLinkClass}>
               Menu
             </a>
-            <a href="https://resy.com/cities/los-angeles-ca/venues/men-and-beasts" className="hover:text-white">
+            <a
+              href="https://resy.com/cities/los-angeles-ca/venues/men-and-beasts"
+              className={navLinkClass}
+            >
               Reservations
             </a>
           </nav>
@@ -34,13 +43,13 @@ export default function Home() {
           </a>
 
           <nav className="hidden items-center gap-6 md:flex">
-            <a href="/private-dining" className="hover:text-white">
+            <a href="/private-dining" className={navLinkClass}>
               Private Dining
             </a>
-            <a href="#about" className="hover:text-white">
+            <a href="#story" className={navLinkClass}>
               About Us
             </a>
-            <a href="/#faq" className="hover:text-white">
+            <a href="/#faq" className={navLinkClass}>
               FAQ
             </a>
           </nav>
@@ -123,9 +132,9 @@ export default function Home() {
 
       <main className="bg-[#0b0a08]">
         <MenuCarousel />
-        <MenuSection />
+        <MenuSection menus={menus} />
 
-        <section id="events" className="mx-auto w-full max-w-7xl px-6 pb-20">
+        <section id="story" className="mx-auto w-full max-w-7xl px-6 pb-20">
           <div className="grid gap-10 lg:grid-cols-[1fr_1fr]">
             <div className="relative min-h-[300px] overflow-hidden rounded-3xl border border-accent/20">
               <Image
@@ -339,6 +348,19 @@ export default function Home() {
           </div>
         </section>
 
+        {/* TODO: Instagram feed (Trustindex widget — needs correct embed code from trustindex.io account)
+        <section className="mx-auto w-full max-w-7xl px-6 pb-20">
+          <h2 className="font-display text-3xl text-[#f2e8dc]">From Instagram</h2>
+          <div className="mt-8">
+            <div id="trustindex-feed-container-instagram-64699633eb0c632" />
+          </div>
+          <Script
+            src="https://cdn.trustindex.io/loader.js?64699633eb0c632"
+            strategy="lazyOnload"
+          />
+        </section>
+        */}
+
         <section className="mx-auto w-full max-w-7xl px-6 pb-20">
           <div className="grid gap-8 lg:grid-cols-[1fr_1fr]">
             <div className="rounded-3xl border border-accent/20 bg-[#15110d] p-8 text-[#f2e8dc] shadow-[0_18px_40px_rgba(67,38,24,0.2)]">
@@ -400,7 +422,7 @@ function Button({
     primary:
       "bg-accent text-white hover:bg-[#d06a3b] shadow-[0_12px_30px_rgba(204,90,47,0.3)]",
     outline:
-      "border border-[#e0c7b6] text-[#f8f2ea] bg-[#6b3b24] hover:bg-[#7a4429]",
+      "border border-[#e0c7b6] text-[#f8f2ea] bg-[#3C2114] hover:bg-[#7a4429]",
     ghost:
       "border border-transparent text-[#f8f2ea] bg-[#2c1a12]/60 hover:bg-[#2c1a12]/80",
   };
