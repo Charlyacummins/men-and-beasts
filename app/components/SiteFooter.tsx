@@ -1,30 +1,11 @@
 import Image from "next/image";
+import { NewsletterSignup } from "./NewsletterSignup";
 
 export function SiteFooter() {
   return (
     <footer className="bg-[#0b0a08] px-6 py-16 text-[#f5efe5]">
       <div className="mx-auto w-full max-w-7xl">
-        <div className="rounded-3xl border border-accent/20 bg-[#15110d] p-10 text-center">
-          <h3 className="font-display text-3xl">Stay Connected with Us!</h3>
-          <p className="mt-3 text-sm text-[#e6d6c7]">
-            Be the first to know about new menu items, events, and promotions.
-            Join our community of food lovers today!
-          </p>
-          <form className="mt-6 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
-            <input
-              type="email"
-              placeholder="Your Email"
-              className="h-12 w-full max-w-sm rounded-full border border-[#5f4131] bg-transparent px-5 text-sm text-[#f2e8dc] placeholder:text-[#cdb8a5]"
-              required
-            />
-            <button
-              type="submit"
-              className="h-12 rounded-full bg-accent px-6 text-xs uppercase tracking-[0.3em] text-white"
-            >
-              Subscribe
-            </button>
-          </form>
-        </div>
+        <NewsletterSignup />
 
         <div className="mt-14 grid gap-10 lg:grid-cols-[1fr_2fr]">
           <div>

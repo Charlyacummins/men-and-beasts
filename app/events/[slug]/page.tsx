@@ -44,32 +44,28 @@ export default async function EventDetailPage({
       <SiteHeader />
 
       {/* Hero */}
-      <section className="relative h-[420px] bg-[#15110d] md:h-[520px]">
+      <section className="relative h-[480px] bg-[#15110d] md:h-[580px]">
         {event.heroImageUrl && (
           <Image
             src={event.heroImageUrl}
             alt={event.heroTitle ?? event.title}
             fill
             sizes="100vw"
-            className="object-contain"
+            className="object-cover"
             priority
           />
         )}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent" />
-        {(event.heroTitle || event.heroSubtitle) && (
-          <div className="relative z-10 mx-auto flex h-full w-full max-w-5xl flex-col items-center justify-center px-6 text-center">
-            {event.heroTitle && (
-              <h1 className="font-display text-4xl md:text-6xl">
-                {event.heroTitle}
-              </h1>
-            )}
-            {event.heroSubtitle && (
-              <p className="mt-4 text-sm uppercase tracking-[0.3em] text-[#e6d6c7]">
-                {event.heroSubtitle}
-              </p>
-            )}
-          </div>
-        )}
+        <div className="absolute inset-0 bg-gradient-to-t from-[#0b0a08] via-black/40 to-black/20" />
+        <div className="relative z-10 mx-auto flex h-full w-full max-w-4xl flex-col items-center justify-end px-6 pb-16 text-center">
+          {event.heroTitle && (
+            <h1 className="font-display text-4xl md:text-6xl">{event.heroTitle}</h1>
+          )}
+          {event.heroSubtitle && (
+            <p className="mt-3 text-sm uppercase tracking-[0.3em] text-[#cdb8a5]">
+              {event.heroSubtitle}
+            </p>
+          )}
+        </div>
       </section>
 
       <main className="mx-auto w-full max-w-7xl px-6 py-16">
@@ -89,23 +85,24 @@ export default async function EventDetailPage({
             )}
 
             {/* Resy booking card */}
-            <div className="rounded-2xl bg-[#fdfaf4]/90 p-8 text-[#2d2d2d]">
-              <h3 className="font-display text-[2rem] leading-tight">
+            <div className="rounded-3xl border border-accent/20 bg-[#15110d] p-8 text-[#f2e8dc] shadow-[0_18px_40px_rgba(67,38,24,0.25)]">
+              <p className="text-xs uppercase tracking-[0.3em] text-[#cdb8a5]">Reservations</p>
+              <h3 className="mt-4 font-display text-3xl">
                 {event.resyCardTitle ?? "Reserve your spot"}
               </h3>
               {event.resyCardText && (
-                <p className="mt-4 text-base leading-relaxed">
-                  {event.resyCardText}
-                </p>
+                <p className="mt-4 text-[#e6d6c7]">{event.resyCardText}</p>
               )}
-              <a
-                href={resyHref}
-                target="_blank"
-                rel="noreferrer"
-                className="mt-6 inline-block rounded-sm bg-[#3c2114] px-8 py-4 text-xs font-semibold uppercase tracking-[0.2em] text-white transition hover:bg-[#5a3020]"
-              >
-                Book Now
-              </a>
+              <div className="mt-6 flex flex-wrap gap-4">
+                <a
+                  href={resyHref}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center justify-center rounded-full bg-accent px-6 py-3 text-xs uppercase tracking-[0.3em] text-white shadow-[0_12px_30px_rgba(204,90,47,0.3)] transition hover:bg-[#d06a3b]"
+                >
+                  Book Now
+                </a>
+              </div>
             </div>
           </div>
 
