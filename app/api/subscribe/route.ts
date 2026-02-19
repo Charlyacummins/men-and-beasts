@@ -73,7 +73,7 @@ export async function POST(req: Request) {
 
     return NextResponse.json({
       ok: true,
-      message: status === "pending" ? "Check your email to confirm!" : "You're subscribed!",
+      message: "You're subscribed!",
     });
   } catch {
     return NextResponse.json({ error: "Invalid request." }, { status: 400 });
